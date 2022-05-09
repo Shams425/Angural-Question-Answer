@@ -1,0 +1,72 @@
+<app-header></app-header>
+<section>
+  <main>
+    <h2 class="text-dark m-3">Add Question</h2>
+    <form
+      class="mb-3 p-3"
+      [formGroup]="QuestionForm"
+      (ngSubmit)="onSubmit(QuestionForm)"
+    >
+      <label for="text" class="form-label">Question</label>
+      <input
+        type="text"
+        class="form-control mb-4"
+        formControlName="question"
+        id=""
+        aria-describedby="helpId"
+        required="true"
+        placeholder=""
+      />
+      <label for="text" class="form-label">Answer</label>
+      <input
+        type="text"
+        class="form-control mb-4"
+        formControlName="answer"
+        id=""
+        aria-describedby="helpId"
+        required="true"
+        placeholder=""
+      />
+
+      <div class="buttonContainer d-flex justify-content-between">
+        <button type="submit" class="btn btn-success" *ngIf="showSubmit">
+          Submit
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="updateQuestion(QuestionForm)"
+          *ngIf="showUpdate"
+        >
+          Update
+        </button>
+        <div class="cancelButtons">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="formReset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- show question -->
+  <div class="container-fulid d-flex flex-wrap">
+    <div class="row">
+      <div
+        class="col-lg-4 col-md-6 col-sm-12 p-3"
+        *ngFor="let question of questions; index as i"
+      >
+        <app-show-question
+          [Qvalue]="question.question"
+          [Avalue]="question.answer"
+          (questionEdit)="onEditClick(i)"
+          (questionDelete)="onDeleteClick(i)"
+        ></app-show-question>
+      </div>
+    </div>
+  </div>
+</section>

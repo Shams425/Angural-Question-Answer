@@ -1,0 +1,33 @@
+<div class="accordion p-3" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        {{ questionValue }}
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse hide"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">{{ answerValue }}</div>
+
+      <div class="configButtons p-3 d-flex justify-content-between">
+        <button class="btn btn-primary" title="edit" (click)="editClick()">
+          <i class="fas fa-pen"></i>
+        </button>
+        <button class="btn btn-danger" title="delete" (click)="deleteClick()">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
